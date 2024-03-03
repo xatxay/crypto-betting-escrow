@@ -1,4 +1,4 @@
-use crate::state::*;
+use crate::{deposit::deposit_initializer_handler, state::*};
 use anchor_lang::{prelude::*, solana_program::native_token::LAMPORTS_PER_SOL};
 
 #[derive(Accounts)]
@@ -28,5 +28,8 @@ pub fn initialize_bet_handler(
     escrow_state.escrow_amount = escrow_amount * LAMPORTS_PER_SOL;
     escrow_state.win_price = win_price;
     escrow_state.lose_price = lose_price;
+
+    deposit_initializer_handler(ctx, escrow_amount)?;
+
     Ok(())
 }

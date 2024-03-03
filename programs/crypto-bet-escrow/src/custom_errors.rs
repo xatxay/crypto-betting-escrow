@@ -7,4 +7,6 @@ pub enum EscrowErrorCode {
     AcceptorNotSet,
     #[msg("User didn't initialize the bet")]
     NoInitializer,
+    #[msg("Invalid role")]
+    InvalidRole,
 }

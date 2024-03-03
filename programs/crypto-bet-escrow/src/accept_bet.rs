@@ -1,4 +1,4 @@
-use crate::state::*;
+use crate::{deposit::deposit_acceptor_handler, state::*};
 use anchor_lang::prelude::*;
 
 #[derive(Accounts)]
@@ -16,9 +16,9 @@ pub struct AcceptBet<'info> {
 }
 
 pub fn accept_bet_handler(ctx: Context<AcceptBet>) -> Result<()> {
-    let escrow_account = &mut ctx.accounts.escrow_account;
-    escrow_account.acceptor = *ctx.accounts.acceptor.key;
+    ctx.accounts.escrow_account.acceptor = *ctx.accounts.acceptor.key;
+    let escrow_amount = ctx.accounts.escrow_account.escrow_amount;
 
-    escrow_account.is_active = true;
+    deposit_acceptor_handler(ctx, escrow_amount)?;
     Ok(())
 }
