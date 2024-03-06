@@ -18,3 +18,4 @@ default = []
 [dependencies]
 anchor-lang = "0.29.0"
 switchboard-v2 = "0.4.0"
+switchboard-solana = "0.29.99"

@@ -7,11 +7,11 @@ pub struct AcceptBet<'info> {
     pub acceptor: Signer<'info>,
     #[account(
         mut,
-        seeds = [ESCROW_SEED, escrow_account.initializer.as_ref()],
+        seeds = [ESCROW_SEED, acceptor.key().as_ref()],
         bump,
         constraint = escrow_account.acceptor == Pubkey::default()
     )]
-    pub escrow_account: Account<'info, EscrowState>,
+    pub escrow_account: Box<Account<'info, EscrowState>>,
     pub system_program: Program<'info, System>,
 }
 

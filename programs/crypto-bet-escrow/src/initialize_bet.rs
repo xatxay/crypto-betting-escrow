@@ -12,7 +12,7 @@ pub struct InitializeBet<'info> {
         payer = initializer,
         space = std::mem::size_of::<EscrowState>() + 8
     )]
-    pub escrow_account: Account<'info, EscrowState>,
+    pub escrow_account: Box<Account<'info, EscrowState>>,
     pub system_program: Program<'info, System>,
 }
 

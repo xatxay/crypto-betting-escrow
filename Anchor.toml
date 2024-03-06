@@ -5,14 +5,17 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-crypto_bet_escrow = "Da9ntLekG2xkGhZPxSZwxnwZqh43q8KZCaHHbutq9BMM"
+crypto_bet_escrow = "DgAjAXVQ1Capcc8ehiqpQwqba1wzsmh4pozP389ZmQUd"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "devnet"
 wallet = "/Users/xatxay/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[test]
+startup_wait = 10000

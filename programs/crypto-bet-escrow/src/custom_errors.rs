@@ -9,4 +9,10 @@ pub enum EscrowErrorCode {
     NoInitializer,
     #[msg("Invalid role")]
     InvalidRole,
+    #[msg("Switchboard feed has not been updated in 5 minutes")]
+    StaleFeed,
+    #[msg("Bet is still active, No winner yet")]
+    OutcomeNotDetermined,
+    #[msg("Not a winner")]
+    NotWinner,
 }
