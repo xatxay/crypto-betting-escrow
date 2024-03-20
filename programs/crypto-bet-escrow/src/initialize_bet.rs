@@ -1,5 +1,5 @@
 use crate::{deposit::deposit_initializer_handler, state::*};
-use anchor_lang::{prelude::*, solana_program::native_token::LAMPORTS_PER_SOL};
+use anchor_lang::prelude::*;
 
 #[derive(Accounts)]
 pub struct InitializeBet<'info> {
@@ -25,7 +25,7 @@ pub fn initialize_bet_handler(
     let escrow_state = &mut ctx.accounts.escrow_account;
     escrow_state.initializer = *ctx.accounts.initializer.key;
     escrow_state.acceptor = Pubkey::default();
-    escrow_state.escrow_amount = escrow_amount * LAMPORTS_PER_SOL;
+    escrow_state.escrow_amount = escrow_amount;
     escrow_state.win_price = win_price;
     escrow_state.lose_price = lose_price;
 
